@@ -5,8 +5,11 @@ import ToDoList from './ToDoList';
 function App() {
     return (
         <div className="App">
-            <ToDoList title={"What to do"}/>  // ToDoList({title: "What to do"})
-            <div>
+            <ToDoList title={"What to do"}/>  {/* ToDoList({title: "What to do"}) это то, что под капотом*/}
+            <ToDoList title={"What to learn"}/>
+            <ToDoList title={"What to buy"}/>
+            <ToDoList title={"What to read"}/> 
+            {/* <div>
                 <h3>What to learn</h3>
                 <div>
                     <input/>
@@ -22,7 +25,7 @@ function App() {
                     <button>Active</button>
                     <button>Completed</button>
                 </div>
-            </div>
+            </div> */}
         </div>
     );
 }
