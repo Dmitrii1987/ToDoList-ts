@@ -6,9 +6,9 @@ function App() {
     //BLL: 
 
     const tasks_1: Array<TaskType> = [
-        {id: 1, title: "HTML&CSS", isDone: true},
-        {id: 2, title: "JS/TS", isDone: true},
-        {id: 3, title: "React", isDone: false},
+        {id: 1, title: "Sleep", isDone: true},
+        {id: 2, title: "Run", isDone: true},
+        {id: 3, title: "Eat", isDone: false},
     ]
     const tasks_2: Array<TaskType> = [
         {id: 4, title: "HTML&CSS", isDone: true},
@@ -16,14 +16,14 @@ function App() {
         {id: 6, title: "React", isDone: false},
     ]
     const tasks_3: Array<TaskType> = [
-        {id: 7, title: "HTML&CSS", isDone: true},
-        {id: 8, title: "JS/TS", isDone: true},
-        {id: 9, title: "React", isDone: false},
+        {id: 7, title: "Car", isDone: true},
+        {id: 8, title: "House", isDone: true},
+        {id: 9, title: "Airplane", isDone: false},
     ]
     const tasks_4: Array<TaskType> = [
-        {id: 10, title: "HTML&CSS", isDone: true},
-        {id: 11, title: "JS/TS", isDone: true},
-        {id: 12, title: "React", isDone: false},
+        {id: 10, title: "Grokking algorithms", isDone: true},
+        {id: 11, title: "Sherlock Holmes", isDone: true},
+        {id: 12, title: "1984", isDone: false},
     ]
 
     //UI:
