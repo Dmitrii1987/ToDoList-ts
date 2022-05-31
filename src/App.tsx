@@ -3,7 +3,7 @@ import './App.css';
 import ToDoList, { TaskType } from './ToDoList';
 
 function App() {
-    //BLL: 
+    //BLL(business logic layer)
 
     const tasks_1: Array<TaskType> = [
         {id: 1, title: "Sleep", isDone: true},
@@ -26,18 +26,21 @@ function App() {
         {id: 12, title: "1984", isDone: false},
     ]
 
-    //UI:
+    //UI(user interface):
     return (
         <div className="App">
             <ToDoList 
             title={"What to do"}
             tasks={tasks_1}/>  {/* ToDoList({title: "What to do"}) это то, что под капотом*/}
+
             <ToDoList
              title={"What to learn"}
              tasks={tasks_2}/>
+
             <ToDoList
              title={"What to buy"}
              tasks={tasks_3}/>
+             
             <ToDoList 
             title={"What to read"}
             tasks={tasks_4}/> 
