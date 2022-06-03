@@ -1,4 +1,5 @@
 import React from 'react';
+import { FilterValuesType } from './App';
 // rsc нужно напечатать и появится весь код
 
 export type TaskType = {
@@ -11,7 +12,8 @@ export type TaskType = {
 type ToDoListPropsType = {
     title: string
     tasks: Array<TaskType>
-    removeTask: (taskID: number) => void;
+    removeTask: (taskID: number) => void
+    changeToDoListFilter: (filter: FilterValuesType) => void;
 }
 const ToDoList = (props: ToDoListPropsType) => {
     const tasksJSX = props.tasks.map(t => {
@@ -19,7 +21,7 @@ const ToDoList = (props: ToDoListPropsType) => {
             <li key={t.id}>
                 <input type="checkbox" checked={t.isDone}/>
                 <span>{t.title}</span>
-                <button onClick={() =>props.removeTask(t.id)}>x</button>
+                <button onClick={ () => props.removeTask(t.id)}>x</button>
             </li>
         )
     })
@@ -34,9 +36,9 @@ const ToDoList = (props: ToDoListPropsType) => {
                     {tasksJSX}
                 </ul>
                 <div>
-                    <button>All</button>
-                    <button>Active</button>
-                    <button>Completed</button>
+                    <button onClick={ () => props.changeToDoListFilter("all")}>All</button>
+                    <button onClick={ () => props.changeToDoListFilter("active")}>Active</button>
+                    <button onClick={ () => props.changeToDoListFilter("completed")}>Completed</button>
                 </div>
             </div>
     );
