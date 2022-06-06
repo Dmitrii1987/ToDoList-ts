@@ -3,7 +3,7 @@ import { FilterValuesType } from './App';
 // rsc нужно напечатать и появится весь код
 
 export type TaskType = {
-    id: number
+    id: string
     title: string
     isDone: boolean
 }
@@ -12,7 +12,7 @@ export type TaskType = {
 type ToDoListPropsType = {
     title: string
     tasks: Array<TaskType>
-    removeTask: (taskID: number) => void
+    removeTask: (taskID: string) => void
     changeToDoListFilter: (filter: FilterValuesType) => void;
 }
 const ToDoList = (props: ToDoListPropsType) => {
