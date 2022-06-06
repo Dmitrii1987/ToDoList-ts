@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { FilterValuesType } from './App';
 // rsc нужно напечатать и появится весь код
 
@@ -17,6 +17,7 @@ type ToDoListPropsType = {
     changeToDoListFilter: (filter: FilterValuesType) => void;
 }
 const ToDoList = (props: ToDoListPropsType) => {
+    const [title, setTitle] = useState<string>("")
     const tasksJSX = props.tasks.map(t => {
         return (
             <li key={t.id}>
@@ -26,12 +27,21 @@ const ToDoList = (props: ToDoListPropsType) => {
             </li>
         )
     })
+
+    //const OnClickHandler = () => props.changeToDoListFilter("all")
+    const addTask = () => {
+        props.addTask(title)
+        setTitle("")
+    }
+
     return (
         <div>
             <h3>{props.title}</h3>
             <div>
-                <input />
-                <button onClick={() => props.addTask("learn React ")}>+</button>
+                <input
+                    value={title}
+                    onChange={(e) => setTitle(e.currentTarget.value)} />
+                <button onClick={addTask}>+</button>
             </div>
             <ul>
                 {tasksJSX}
