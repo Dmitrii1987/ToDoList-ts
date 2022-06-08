@@ -40,7 +40,10 @@ const ToDoList = (props: ToDoListPropsType) => {
             <div>
                 <input
                     value={title}
-                    onChange={(e) => setTitle(e.currentTarget.value)} />
+                    onChange={(e) => setTitle(e.currentTarget.value)}
+                    onKeyDown= {(e) => {e.key==="Enter" && addTask()}}
+                    //e.current target-> input
+                    />
                 <button onClick={addTask}>+</button>
             </div>
             <ul>
