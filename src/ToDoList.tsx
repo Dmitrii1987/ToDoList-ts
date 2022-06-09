@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { ChangeEvent, KeyboardEvent, useState } from 'react';
 import { FilterValuesType } from './App';
 // rsc нужно напечатать и появится весь код
 
@@ -39,23 +39,25 @@ const ToDoList = (props: ToDoListPropsType) => {
         setTitle("")
     }
 
+    const onKeyDownAddTask = (e: KeyboardEvent<HTMLInputElement>) => e.key === "Enter" && addTask()
+    const onChangeSetTitle = (e: ChangeEvent<HTMLInputElement>) => setTitle(e.currentTarget.value)
+
     return (
         <div>
             <h3>{props.title}</h3>
             <div>
                 <input
                     value={title}
-                    onChange={(e) => setTitle(e.currentTarget.value)}
-                    onKeyDown= {(e) => {e.key==="Enter" && addTask()}}
-                    //e.current target-> input
-                    />
+                    onChange={onChangeSetTitle}
+                    onKeyDown={onKeyDownAddTask}
+                />
                 <button onClick={addTask}>+</button>
             </div>
             <ul>
                 {tasksJSX}
             </ul>
             <div>
-                <button onClick={(onClickHandler) => props.changeToDoListFilter("all")}>All</button>
+                <button onClick={onClickHandler}>All</button>
                 <button onClick={(getOnClickHandler("active"))}>Active</button>
                 <button onClick={(getOnClickHandler("completed"))}>Completed</button>
             </div>
