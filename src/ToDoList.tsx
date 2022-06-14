@@ -70,6 +70,8 @@ const ToDoList = (props: ToDoListPropsType) => {
                     className = {error ? "error" : ""}
                 />
                 <button onClick={addTask}>+</button>
+                {/* этот приём называется условный рендеринг */}
+                {error && <div style={{color: "red"}}>Title is requared!</div>}
             </div>
             <ul>
                 {tasksJSX}
