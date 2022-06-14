@@ -29,7 +29,8 @@ const ToDoList = (props: ToDoListPropsType) => {
                     type="checkbox"
                     checked={t.isDone}
                 />
-                <span>{t.title}</span>
+                {/* here we add style to tasks that are done(line-through) and opacity 0.5 */}
+                <span className={t.isDone ? "isDone" : ""}>{t.title}</span>
                 <button onClick={removeTask}>x</button>
             </li>
         )

@@ -6,3 +6,8 @@
 .App > div {
   margin-right: 50px;
 }
+
+.isDone {
+  text-decoration: line-through;
+  opacity: 0.5;
+}
