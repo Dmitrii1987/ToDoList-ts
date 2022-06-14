@@ -21,7 +21,8 @@ type ToDoListPropsType = {
 const ToDoList = (props: ToDoListPropsType) => {
     const [title, setTitle] = useState<string>("")
     const [error, setError] = useState<boolean>(false)
-    const tasksJSX = props.tasks.map(t => {
+    const tasksJSX = props.tasks.length //добавили логику,что,когда тасок нет, появляется надпись, что нужно их создать
+    ? props.tasks.map(t => {
         const removeTask = () => props.removeTask(t.id)
         const changeTaskStatus = (e: ChangeEvent<HTMLInputElement>) => props.changeTaskStatus(t.id, e.currentTarget.checked)
         return (
@@ -37,6 +38,7 @@ const ToDoList = (props: ToDoListPropsType) => {
             </li>
         )
     })
+    : <span>Start creating tasks</span>
 
     const getOnClickHandler = (filter: FilterValuesType) => {
         return () => props.changeToDoListFilter(filter)
