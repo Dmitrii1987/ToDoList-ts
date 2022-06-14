@@ -11,3 +11,14 @@
   text-decoration: line-through;
   opacity: 0.5;
 }
+
+.active {
+  background-color: darkcyan;
+  color: white;
+  font-weight: bold;
+}
+
+.error {
+  border: 2px solid red;
+  outline: none;
+}

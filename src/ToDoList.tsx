@@ -11,7 +11,8 @@ export type TaskType = {
 
 type ToDoListPropsType = {
     title: string
-    tasks: Array<TaskType>
+    tasks: TaskType[]
+    filter: FilterValuesType
     addTask: (title: string) => void
     removeTask: (taskID: string) => void
     changeToDoListFilter: (filter: FilterValuesType) => void
@@ -19,9 +20,10 @@ type ToDoListPropsType = {
 }
 const ToDoList = (props: ToDoListPropsType) => {
     const [title, setTitle] = useState<string>("")
+    const [error, setError] = useState<boolean>(false)
     const tasksJSX = props.tasks.map(t => {
         const removeTask = () => props.removeTask(t.id)
-        const changeTaskStatus= (e:ChangeEvent<HTMLInputElement>) => props.changeTaskStatus(t.id, e.currentTarget.checked)
+        const changeTaskStatus = (e: ChangeEvent<HTMLInputElement>) => props.changeTaskStatus(t.id, e.currentTarget.checked)
         return (
             <li key={t.id}>
                 <input
@@ -40,14 +42,22 @@ const ToDoList = (props: ToDoListPropsType) => {
         return () => props.changeToDoListFilter(filter)
     }
 
-    const onClickHandler = () => props.changeToDoListFilter("all")
+    // const onClickHandler = () => props.changeToDoListFilter("all")
     const addTask = () => {
-        props.addTask(title)
+        const trimmedTitle = title.trim()
+        if (trimmedTitle) {
+            props.addTask(trimmedTitle)
+        } else {
+            setError(true)
+        }
         setTitle("")
     }
 
     const onKeyDownAddTask = (e: KeyboardEvent<HTMLInputElement>) => e.key === "Enter" && addTask()
-    const onChangeSetTitle = (e: ChangeEvent<HTMLInputElement>) => setTitle(e.currentTarget.value)
+    const onChangeSetTitle = (e: ChangeEvent<HTMLInputElement>) => {
+        setTitle(e.currentTarget.value)
+        error && setError(false)
+    }
 
     return (
         <div>
@@ -57,6 +67,7 @@ const ToDoList = (props: ToDoListPropsType) => {
                     value={title}
                     onChange={onChangeSetTitle}
                     onKeyDown={onKeyDownAddTask}
+                    className = {error ? "error" : ""}
                 />
                 <button onClick={addTask}>+</button>
             </div>
@@ -64,9 +75,12 @@ const ToDoList = (props: ToDoListPropsType) => {
                 {tasksJSX}
             </ul>
             <div>
-                <button onClick={onClickHandler}>All</button>
-                <button onClick={(getOnClickHandler("active"))}>Active</button>
-                <button onClick={(getOnClickHandler("completed"))}>Completed</button>
+                <button className={props.filter === "all" ? "active" : ""}
+                    onClick={getOnClickHandler("all")}>All</button>
+                <button className={props.filter === "active" ? "active" : ""}
+                    onClick={getOnClickHandler("active")}>Active</button>
+                <button className={props.filter === "completed" ? "active" : ""}
+                    onClick={getOnClickHandler("completed")}>Completed</button>
             </div>
         </div>
     );

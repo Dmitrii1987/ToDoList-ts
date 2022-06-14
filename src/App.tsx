@@ -54,6 +54,7 @@ function App() {
                 title={"What to do"}
                 tasks={tasksForRender}
                 addTask={addTask}
+                filter={filter}
                 removeTask={removeTask}
                 changeToDoListFilter={changeToDoListFilter}
                 changeTaskStatus = {changeTaskStatus}
